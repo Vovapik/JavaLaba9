@@ -13,7 +13,7 @@ public class Producer implements Runnable {
     public void run() {
         try {
             while (true) {
-                String msg = "Потік No " + producerId +
+                String msg = "Потік номер " + producerId +
                         " згенерував повідомлення " + counter++;
                 buffer.put(msg);
                 Thread.sleep(10);

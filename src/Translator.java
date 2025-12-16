@@ -18,7 +18,7 @@ public class Translator implements Runnable {
             while (true) {
                 String msg = input.take();
                 String translated =
-                        "Потік No " + translatorId +
+                        "Потік номер " + translatorId +
                                 " переклав повідомлення: " + msg;
                 output.put(translated);
             }
