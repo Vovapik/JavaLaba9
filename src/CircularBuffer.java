@@ -11,8 +11,8 @@ public class CircularBuffer<T> {
     private final int capacity;
     private int size = 0;
 
-    private Node head; // head index
-    private Node tail; // tail index
+    private Node head;
+    private Node tail;
 
     public CircularBuffer(int capacity) {
         this.capacity = capacity;
@@ -23,13 +23,13 @@ public class CircularBuffer<T> {
             current.next = new Node(null);
             current = current.next;
         }
-        current.next = head; // замикання в кільце
+        current.next = head;
         tail = head;
     }
 
     public synchronized void put(T value) throws InterruptedException {
         while (size == capacity) {
-            wait(); // буфер повний
+            wait();
         }
 
         tail.value = value;
@@ -41,7 +41,7 @@ public class CircularBuffer<T> {
 
     public synchronized T take() throws InterruptedException {
         while (size == 0) {
-            wait(); // буфер порожній
+            wait();
         }
 
         T value = head.value;
